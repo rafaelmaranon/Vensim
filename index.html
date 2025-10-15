@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vensim Model Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔄 Vensim Model Simulator</h1>
+            <p>Interactive System Dynamics Modeling - No Installation Required</p>
+        </header>
+
+        <main>
+            <div class="model-section">
+                <h2>Project Management Model</h2>
+                <p>Simulate a project with work flow, work accomplished, and completion dynamics</p>
+                
+                <div class="controls-panel">
+                    <h3>Model Parameters</h3>
+                    <div class="control-group">
+                        <label for="initialWork">Initial Project Definition (drawings):</label>
+                        <input type="number" id="initialWork" value="1000" min="100" max="5000" step="100">
+                        <span class="unit">drawings</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="workFlow">Work Flow Rate (drawings/month):</label>
+                        <input type="number" id="workFlow" value="100" min="10" max="500" step="10">
+                        <span class="unit">drawings/month</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="simulationTime">Simulation Time (months):</label>
+                        <input type="number" id="simulationTime" value="15" min="5" max="50" step="1">
+                        <span class="unit">months</span>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="timeStep">Time Step (dt):</label>
+                        <input type="number" id="timeStep" value="0.1" min="0.01" max="1" step="0.01">
+                        <span class="unit">months</span>
+                    </div>
+                </div>
+
+                <div class="simulation-controls">
+                    <button id="runSimulation" class="btn-primary">🚀 Run Simulation</button>
+                    <button id="resetSimulation" class="btn-secondary">🔄 Reset</button>
+                </div>
+            </div>
+
+            <div class="results-section">
+                <div class="chart-container">
+                    <h3>Simulation Results</h3>
+                    <canvas id="resultsChart"></canvas>
+                </div>
+                
+                <div class="metrics-panel">
+                    <h3>Key Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-label">Project Completion</div>
+                            <div class="metric-value" id="completionTime">-</div>
+                            <div class="metric-unit">months</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Final Work Accomplished</div>
+                            <div class="metric-value" id="finalWork">-</div>
+                            <div class="metric-unit">drawings</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Work Remaining</div>
+                            <div class="metric-value" id="workRemaining">-</div>
+                            <div class="metric-unit">drawings</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-label">Project Status</div>
+                            <div class="metric-value" id="projectStatus">-</div>
+                            <div class="metric-unit"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-info">
+                <h3>About This Model</h3>
+                <p>This is a simplified version of a project management model based on Vensim system dynamics principles. The model includes:</p>
+                <ul>
+                    <li><strong>Work Accomplished</strong> - A stock that accumulates completed work</li>
+                    <li><strong>Work Remaining</strong> - Calculated as Initial Project Definition minus Work Accomplished</li>
+                    <li><strong>Work Flow</strong> - The rate at which work is completed (stops when project is done)</li>
+                    <li><strong>Project Is Done</strong> - A condition that becomes true when work accomplished reaches the initial definition</li>
+                </ul>
+                <p>The model demonstrates key system dynamics concepts like stocks, flows, and feedback loops.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with ❤️ for System Dynamics Learning | Inspired by <a href="https://vensim.com" target="_blank">Vensim</a></p>
+        </footer>
+    </div>
+
+    <script src="simulator.js"></script>
+</body>
+</html>
